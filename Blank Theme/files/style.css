@@ -97,7 +97,7 @@ body {
   color: inherit;
   border: none;
 }
-
+/* hhh */
 #header h2 {
   font-weight: 400;
   margin: 15px 0;
@@ -324,7 +324,7 @@ a {
   line-height: normal;
   border-radius: 0;
   box-sizing: border-box;
-  /*font-weight: bold;*/
+  /*font-weight: 700;*/
 }
 .reminder-form .item-input,
 .btn {
@@ -378,7 +378,10 @@ body.exit .btn {
 #footer-direct-link {
   padding: 0;
 }
-
+#footer-direct-link a {
+  pointer-events: none;
+  cursor: default;
+}
 #footer a {
   color: inherit;
 }
@@ -386,6 +389,11 @@ body.exit .btn {
 #footer .by {
   padding: 0;
   background-size: 110px 12px;
+  /* background-image: url(./logo-white.svg); */
+}
+#hlLinkToQueueTicket2 {
+  pointer-events: none;
+  text-decoration: none;
 }
 /* elements that main .c padding affects */
 #header,

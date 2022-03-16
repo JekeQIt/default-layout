@@ -6,7 +6,7 @@ queueViewModel.pageReady(function (data) {
   }
   if (pageid == "queue") {
     // $("#lbHeaderH2").html(`YOU ARE NOW IN LINE`);
-    // $("#lbHeaderP").html(`You are in line for...);
+    // $("#lbHeaderP").html(`You are in line for...`);
   }
   // $("#footer-disclaimer").html("Footer disclaimer");
 });
