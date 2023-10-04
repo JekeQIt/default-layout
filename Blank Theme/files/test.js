@@ -1,5 +1,6 @@
 queueViewModel.pageReady(function (data) {
   var pageid = $("body").attr("data-pageid");
+  var culture = $("body").attr("data-culture");
   if (pageid == "before") {
     // $("#lbHeaderH2").html(`[Event Name]`);
     // $("#lbHeaderP").html(`[Event Name] has not yet begun...`);

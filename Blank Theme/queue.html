@@ -85,12 +85,12 @@
             queuePaused: false,
             lastUpdatedUTC: "\/Date(1568981970752)\/",
             queueNumber: "8445",
-            whichIsIn: "4 minutes",
+            whichIsIn: "14 minutes",
             expectedServiceTime: "12:24 PM",
             usersInLineAheadOfYou: "1758",
             lastUpdated: "12:19:30 PM",
             progress: 0.75,
-            timeZonePostfix: "",
+            timeZonePostfix: "GMT",
             expectedServiceTimeUTC: "\/Date(1568982270752)\/",
             customUrlParams: null,
             sdkVersion: null,
@@ -107,7 +107,7 @@
             timestamp: null,
             id: null,
             timestampFormatted: "12:19 PM",
-            timeZonePostfix: "",
+            timeZonePostfix: "GMT",
             timestampUTC: null,
           },
           texts: {
@@ -118,7 +118,7 @@
             styleSheets:
               "<link rel='stylesheet' href='files/default_style.css' type='text/css' /><!--[if lte IE 7]><link rel='stylesheet' href='files/ie.js' type='text/css' /><![endif]--><link rel='stylesheet' href='files/temp.css' type='text/css' /><link rel='stylesheet' href='files/style.css' type='text/css' />",
             javascripts: ["files/script.js"],
-            logoSrc: "files/default_images/queue-it_logo.png",
+            logoSrc: "/files/assets/queue-it_logo.png",
             toppanelIFrameSrc: "",
             sidepanelIFrameSrc: "",
             leftpanelIFrameSrc: "",
@@ -856,22 +856,30 @@
         <div id="main_c" class="c">
           <div id="content">
             <div id="header">
-              <h1 class="logo" data-bind="visible: layout.logoVisible">
-                <img src="files/default_images/queue-it_logo.png" id="imgCustomerLogo" alt="logo" longdesc="company logo for Queue-it" />
+              <div id="logocontainer" class="logo" data-bind="visible: layout.logoVisible">
+                <img
+                  src="./files/assets/new_logo.svg"
+                  id="imgCustomerLogo"
+                  alt="My Layout Test Event"
+                  longdesc="company logo for Jeff Inc"
+                  data-bind="attr: { src: texts.logoSrc }"
+                />
+              </div>
+              <h1 id="headertext">
+                <span id="lbHeaderH2" data-bind="html: texts.header">You are now in line for concert tickets</span>
               </h1>
-              <h2>
-                <span id="lbHeaderH2" data-bind="html: texts.header">You are now in line</span>
-              </h2>
               <div id="headerparagraph">
                 <span id="lbHeaderP" data-bind="html: texts.body"
-                  >You are in line for [Event Name]. When it is your turn, you will have 10 minutes to enter the website.</span
+                  >You are in line for My Layout Test Event. When it is your turn, you will have 10 minutes to enter the website.</span
                 >
               </div>
               <div id="whatisthis">
                 <a
                   id="hlThisIsQueueIt"
-                  href="https://queue-it.com/what-is-this/?preview=true&amp;customerId=frontenddevelopers&amp;hostUrl=localhost"
+                  href="https://queue-it.com/what-is-this.html?customerId=queuejeff&eventId=preview-layout&queueId=00000000-0000-0000-0000-000000000000&language=en-US&preview=true"
                   target="_blank"
+                  data-bind="attr: { href: texts.whatIsThisUrl }"
+                  rel="noopener noreferrer"
                   >What is this?</a
                 >
               </div>
@@ -957,11 +965,11 @@
                   <span id="MainPart_lbWhichIsInText" data-bind="visible: layout.whichIsInVisible">Your estimated wait time is:</span>
                   <span id="MainPart_lbWhichIsIn" data-bind="visible: layout.whichIsInVisible, text: ticket.whichIsIn">5 minutes</span>
                 </p>
-                <ul id="MainPart_ulProgressbarBox_Holder_Processbar" class="processbar">
-                  <li id="defaultViewPb1" class="active">
+                <div id="MainPart_ulProgressbarBox_Holder_Processbar" class="processbar">
+                  <div id="defaultViewPb1" class="active">
                     <span>&nbsp;</span>
-                  </li>
-                </ul>
+                  </div>
+                </div>
                 <div id="MainPart_divProgressbarBox_Holder_LastUpdateTime" data-bind="visible: isRunning">
                   <span id="MainPart_lbLastUpdateTime" title="Everything is fine, as long the 'Status last updated' time is updated regularly."
                     >Status last updated:</span
@@ -992,14 +1000,17 @@
               </h2>
               <div id="MainPart_divEmailInput" class="row" data-bind="visible: layout.reminderEmailVisible">
                 <form id="MainPart_FormEmailInput" name="Email notification form">
+                  <label id="MainPart_lblEmailAddress" for="MainPart_inpEmailAddress">Enter email address</label>
                   <input
-                    name="ctl00$MainPart$inpEmailAddress"
-                    type="text"
+                    type="email"
                     id="MainPart_inpEmailAddress"
+                    name="notificationEmailAddress"
                     title="Enter email address"
                     class="item-input"
-                    placeholder="Enter email address"
+                    placeholder="Enter Email"
                     data-bind="value: emailAddress"
+                    autocomplete="on"
+                    aria-labelledby="MainPart_lblEmailAddress"
                   />
                   <button type="submit" class="btn" id="aUpdateEmail" data-bind="click: updateNotify">
                     <span class="l">Notify me by e-mail</span><span class="r">&nbsp;</span>
@@ -1023,8 +1034,8 @@
           <div id="footer">
             <div id="footer-disclaimer" data-bind="html: texts.disclaimerText"></div>
             <div id="footer-direct-link" style="" data-bind="visible: hasQueueId">
-              <span id="hlLinkToQueueTicket2Text">Queue ID:</span>
-              <a id="hlLinkToQueueTicket2" data-bind="text: queueId, click: toggleQueueIdLinkModal">00000000-0000-0000-0000-000000000001</a>
+              <button id="hlLinkToQueueTicket2Text">Queue ID:</button>
+              <span id="hlLinkToQueueTicket2" data-bind="text: queueId">24296a6f-3a0f-460b-a887-7b7717bd50cb</span>
             </div>
             <div id="footer-queueit-link">
               <strong class="by">
@@ -1032,8 +1043,37 @@
                   href="https://queue-it.com/what-is-this.html?customerId=gaha&amp;eventId=localhost&amp;queueId=00000000-0000-0000-0000-000000000000&amp;language=en-US&amp;preview=true"
                   id="aThisIsQueueIt"
                   target="_blank"
-                  >QUEUE-IT</a
                 >
+                  <svg id="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4486.51 763.5" aria-labelledby="footer-logo-svg-title" role="img">
+                    <title id="footer-logo-svg-title">Queue-it Logo</title>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M453,594c-118,0-202-53-232-137-10-26-15-54-15-85s5-59,15-85c30-84,114-137,232-137s203,53,233,137c10,26,15,54,15,85s-5,59-15,85c-31,85-115,137-233,137ZM0,372c0,49,7,94,22,134,54,151,211,238,429,238h447v-199l-249,65v-24c61-13,110-31,149-56,76-46,100-113,100-212C898,90,658,0,450,0,231,0,76,88,22,238,7,278,0,323,0,372Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M1159.42,763c104,0,170-52,206-156h20l-38,137h186V249h-186v247c0,79-43,127-117,127-66,0-98-36-98-101V249h-186v302c0,138,71,212,213,212Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M2465.02,763c104,0,170-52,206-156h20l-38,137h186V249h-186v247c0,79-43,127-117,127-66,0-98-36-98-101V249h-186v302c0,138,71,212,213,212Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M1903.66,763c162,0,277-69,300-173h-185c-19,36-59,56-118,56-55,0-95-16-116-47-12-16-19-38-23-64h440v-39c0-169-110-266-305-266-122,0-218,40-269,113-27,41-45,93-45,155s15,112,43,152c51,73,148,113,278,113Zm-139-322c4-19,10-35,19-48,22-32,63-49,114-49,80,0,122,35,126,97h-259Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M3209.26,763c162,0,277-69,300-173h-185c-19,36-59,56-118,56-55,0-95-16-116-47-12-16-19-38-23-64h440v-39c0-169-110-266-305-266-122,0-218,40-269,113-27,41-45,93-45,155s15,112,43,152c51,73,148,113,278,113Zm-139-322c4-19,10-35,19-48,22-32,63-49,114-49,80,0,122,35,126,97h-259Z"
+                    ></path>
+                    <path class="footer-logo-svg-path" d="M3713.82,611c64,0,118-53,118-117s-54-118-118-118-117,54-117,118,53,117,117,117Z"></path>
+                    <path class="footer-logo-svg-path" d="M3922.54,249.64v495h186V249.64h-186Zm-3-46h192V73.64h-192V203.64Z"></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M4160.51,118.5v432c0,148,92,213,212,213,40,0,74-2,111-8v-130c-17,3-37,3-49,3-58,0-88-37-88-102v-161h140v-113h-140V118.5h-186Z"
+                    ></path>
+                  </svg>
+                </a>
               </strong>
             </div>
           </div>

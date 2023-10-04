@@ -3,49 +3,20 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <!-- <meta id="queue-it_log" data-userid="7f010852-4361-4e0a-85d6-925231748e62" data-proxyurl="https://logging.queue-it.net/logging/event"> -->
     <title>Queue-it</title>
-    <link
-      rel="apple-touch-icon-precomposed"
-      sizes="144x144"
-      href="files/default_images/apple-touch-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon-precomposed"
-      sizes="152x152"
-      href="files/default_images/apple-touch-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="files/default_images/queue-it_appletouch.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="files/default_images/favicon-32x32.png"
-      sizes="32x32"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="files/default_images/favicon-16x16.png"
-      sizes="16x16"
-    />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="files/default_images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="files/default_images/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" href="files/default_images/queue-it_appletouch.png" />
+    <link rel="icon" type="image/png" href="files/default_images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="files/default_images/favicon-16x16.png" sizes="16x16" />
     <link rel="shortcut icon" href="files/default_images/queue-it.ico" />
     <meta name="application-name" content=" " />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta
-      name="msapplication-TileImage"
-      content="files/default_images/mstile-144x144.png"
-    />
+    <meta name="msapplication-TileImage" content="files/default_images/mstile-144x144.png" />
     <link rel="stylesheet" href="files/default_style.css" type="text/css" />
-    <!--[if lte IE 7
-      ]><link rel="stylesheet" href="files/ie.css" type="text/css"
-    /><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="files/ie.css" type="text/css" /><![endif]-->
     <link rel="stylesheet" href="files/temp.css" type="text/css" />
     <link rel="stylesheet" href="files/style.css" type="text/css" />
     <link rel="stylesheet" href="files/previewstate.css" type="text/css" />
@@ -65,17 +36,11 @@
     </script>
     <script type="text/javascript" src="files/common.js"></script>
     <script>
-      window.jQuery ||
-        document.write(
-          '<script src="' + getScriptBasePath() + "common.js" + '"><\/script>'
-        );
+      window.jQuery || document.write('<script src="' + getScriptBasePath() + "common.js" + '"><\/script>');
     </script>
     <script type="text/javascript" src="files/queueit.js"></script>
     <script>
-      window.QueueIt ||
-        document.write(
-          '<script src="' + getScriptBasePath() + "queueit.js" + '"><\/script>'
-        );
+      window.QueueIt || document.write('<script src="' + getScriptBasePath() + "queueit.js" + '"><\/script>');
 
       if (window.soundManager) window.soundManager.debugMode = false;
     </script>
@@ -117,49 +82,32 @@
 
   <body data-pageid="after" data-culture="en-US" class="after">
     <div id="toppanel" data-bind="visible: layout.topPanelVisible">
-      <iframe
-        id="toppanel_iframe"
-        src="files/top.html"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
+      <iframe id="toppanel_iframe" src="files/top.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
     </div>
 
     <div id="wrapper">
       <div id="leftpanel" data-bind="visible: layout.leftPanelVisible">
-        <iframe
-          id="leftpanel_iframe"
-          src="files/left.html"
-          allowtransparency="true"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
+        <iframe id="leftpanel_iframe" src="files/left.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
       </div>
       <div id="main">
         <div id="main_t" class="t"></div>
         <div id="main_c" class="c">
           <div id="content">
             <div id="header">
-              <h1 class="logo" data-bind="visible: layout.logoVisible">
+              <div id="logocontainer" class="logo" data-bind="visible: layout.logoVisible">
                 <img
-                  src="files/default_images/queue-it_logo.png"
+                  src="/img/queue-it_logo.png"
                   id="imgCustomerLogo"
-                  alt="logo"
-                  longdesc="company logo for Queue-it"
-                  data-bind="attr:  { src: texts.logoSrc }"
+                  alt="My Layout Test Event"
+                  longdesc="company logo for Jeff Inc"
+                  data-bind="attr: { src: texts.logoSrc }"
                 />
+              </div>
+              <h1 id="headertext">
+                <span id="lbHeaderH2" data-bind="html: texts.header">You are now in line for concert tickets</span>
               </h1>
-              <h2>
-                <span id="lbHeaderH2" data-bind="html: texts.header"
-                  >The event has ended</span
-                >
-              </h2>
               <div id="headerparagraph">
-                <span id="lbHeaderP" data-bind="html: texts.body"
-                  >The [Event Name] event has ended, and the line is now
-                  closed.</span
-                >
+                <span id="lbHeaderP" data-bind="html: texts.body">The [Event Name] event has ended, and the line is now closed.</span>
               </div>
               <div id="whatisthis">
                 <a
@@ -183,41 +131,61 @@
             <div id="MainPart_divBlock" class="block">
               <p></p>
             </div>
-            <div
-              id="MainPart_divTimeBox"
-              class="time-box"
-              data-bind="visible: message()"
-            >
-              <div
-                id="MainPart_divTimeBox_Holder"
-                class="holder"
-                data-bind="if: message()"
-              ></div>
+            <div id="MainPart_divTimeBox" class="time-box" data-bind="visible: message()">
+              <div id="MainPart_divTimeBox_Holder" class="holder" data-bind="if: message()"></div>
             </div>
           </div>
           <div id="middlepanel" data-bind="visible: layout.middlePanelVisible">
-            <iframe
-              id="middlepanel_iframe"
-              src="files/middle.html"
-              allowtransparency="true"
-              frameborder="0"
-              scrolling="no"
-            ></iframe>
+            <iframe id="middlepanel_iframe" src="files/middle.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
           </div>
           <div id="footer">
-            <div
-              id="footer-disclaimer"
-              data-bind="html: texts.disclaimerText"
-            ></div>
-
+            <div id="footer-disclaimer" data-bind="html: texts.disclaimerText"></div>
+            <div id="footer-direct-link" style="" data-bind="visible: hasQueueId">
+              <button
+                id="hlLinkToQueueTicket2Text"
+                data-bind="event: { click: toggleQueueIdLinkModal, keyup: onEnterToggleQueueIdLinkModal }, attr: { tabIndex: queueIdLinkTabIndex() }"
+              >
+                Queue ID:
+              </button>
+              <span id="hlLinkToQueueTicket2" data-bind="text: queueId">24296a6f-3a0f-460b-a887-7b7717bd50cb</span>
+            </div>
             <div id="footer-queueit-link">
               <strong class="by">
                 <a
-                  href="https://queue-it.com/what-is-this/?customerId=frontenddevelopers&amp;eventId=localhost&amp;queueId=00000000-0000-0000-0000-000000000001&amp;language=en-US&amp;hostUrl=localhost"
+                  href="https://queue-it.com/what-is-this.html?customerId=gaha&amp;eventId=localhost&amp;queueId=00000000-0000-0000-0000-000000000000&amp;language=en-US&amp;preview=true"
                   id="aThisIsQueueIt"
                   target="_blank"
-                  >QUEUE-IT</a
                 >
+                  <svg id="footer-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4486.51 763.5" aria-labelledby="footer-logo-svg-title" role="img">
+                    <title id="footer-logo-svg-title">Queue-it Logo</title>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M453,594c-118,0-202-53-232-137-10-26-15-54-15-85s5-59,15-85c30-84,114-137,232-137s203,53,233,137c10,26,15,54,15,85s-5,59-15,85c-31,85-115,137-233,137ZM0,372c0,49,7,94,22,134,54,151,211,238,429,238h447v-199l-249,65v-24c61-13,110-31,149-56,76-46,100-113,100-212C898,90,658,0,450,0,231,0,76,88,22,238,7,278,0,323,0,372Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M1159.42,763c104,0,170-52,206-156h20l-38,137h186V249h-186v247c0,79-43,127-117,127-66,0-98-36-98-101V249h-186v302c0,138,71,212,213,212Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M2465.02,763c104,0,170-52,206-156h20l-38,137h186V249h-186v247c0,79-43,127-117,127-66,0-98-36-98-101V249h-186v302c0,138,71,212,213,212Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M1903.66,763c162,0,277-69,300-173h-185c-19,36-59,56-118,56-55,0-95-16-116-47-12-16-19-38-23-64h440v-39c0-169-110-266-305-266-122,0-218,40-269,113-27,41-45,93-45,155s15,112,43,152c51,73,148,113,278,113Zm-139-322c4-19,10-35,19-48,22-32,63-49,114-49,80,0,122,35,126,97h-259Z"
+                    ></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M3209.26,763c162,0,277-69,300-173h-185c-19,36-59,56-118,56-55,0-95-16-116-47-12-16-19-38-23-64h440v-39c0-169-110-266-305-266-122,0-218,40-269,113-27,41-45,93-45,155s15,112,43,152c51,73,148,113,278,113Zm-139-322c4-19,10-35,19-48,22-32,63-49,114-49,80,0,122,35,126,97h-259Z"
+                    ></path>
+                    <path class="footer-logo-svg-path" d="M3713.82,611c64,0,118-53,118-117s-54-118-118-118-117,54-117,118,53,117,117,117Z"></path>
+                    <path class="footer-logo-svg-path" d="M3922.54,249.64v495h186V249.64h-186Zm-3-46h192V73.64h-192V203.64Z"></path>
+                    <path
+                      class="footer-logo-svg-path"
+                      d="M4160.51,118.5v432c0,148,92,213,212,213,40,0,74-2,111-8v-130c-17,3-37,3-49,3-58,0-88-37-88-102v-161h140v-113h-140V118.5h-186Z"
+                    ></path>
+                  </svg>
+                </a>
               </strong>
             </div>
           </div>
@@ -225,32 +193,14 @@
         <div id="MainPart_divVersionInfo" class="b" title="4.3.48.0"></div>
       </div>
       <div id="rightpanel" data-bind="visible: layout.rightPanelVisible">
-        <iframe
-          id="rightpanel_iframe"
-          src="files/right.html"
-          allowtransparency="true"
-          frameborder="0"
-          scrolling="no"
-        ></iframe>
+        <iframe id="rightpanel_iframe" src="files/right.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
       </div>
     </div>
     <div id="sidebar" data-bind="visible: layout.sidePanelVisible">
-      <iframe
-        id="sidebar_iframe"
-        src="files/side.html"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
+      <iframe id="sidebar_iframe" src="files/side.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
     </div>
     <div id="bottompanel" data-bind="visible: layout.bottomPanelVisible">
-      <iframe
-        id="bottompanel_iframe"
-        src="files/bottom.html"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
+      <iframe id="bottompanel_iframe" src="files/bottom.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
     </div>
   </body>
 </html>

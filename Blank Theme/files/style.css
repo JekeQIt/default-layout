@@ -1,3 +1,5 @@
+/* Jeke template*/
+
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'); */
 body {
   background-color: #fff;
@@ -45,6 +47,7 @@ body {
 #content {
   color: inherit;
   font-weight: 400;
+  padding: 0;
 }
 
 /* hide empty containers - beginning */
@@ -82,6 +85,7 @@ body {
 #main-top-message {
   text-align: center;
   padding-top: 3px;
+  display: none;
 }
 
 .item {
@@ -97,8 +101,8 @@ body {
   color: inherit;
   border: none;
 }
-/* hhh */
-#header h2 {
+/* hhh #headertext*/
+#header h1 {
   font-weight: 400;
   margin: 15px 0;
   line-height: normal;
@@ -225,13 +229,14 @@ a {
   width: 24px;
   margin: 5px auto;
 }
-.processbar li {
+#defaultViewPb1 {
   height: 14px;
   width: 14px;
   border-radius: 50%;
   /* border: 1px solid #000; */
   box-shadow: 0px 0px 3px #000;
   margin: 3px;
+  overflow: hidden;
 }
 .processbar span {
   background-image: linear-gradient(to bottom, #fff 21px, red 21px);
@@ -373,8 +378,15 @@ body.exit .btn {
   color: inherit;
   padding: 10px 0;
   font-weight: 400;
+  font-size: 10px;
 }
-
+#hlLinkToQueueTicket2Text {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+  padding: 0 6px;
+}
 #footer-direct-link {
   padding: 0;
 }
@@ -382,15 +394,29 @@ body.exit .btn {
   pointer-events: none;
   cursor: default;
 }
+#footer-queueit-link {
+  float: none;
+}
+#footer-queueit-link .by {
+  text-align: right;
+  width: auto;
+}
+#footer .by a {
+  line-height: normal;
+}
+#footer svg {
+  text-align: right;
+  width: auto;
+  height: 10px;
+  display: inline-block;
+}
+.footer-logo-svg-path {
+}
+
 #footer a {
   color: inherit;
 }
 
-#footer .by {
-  padding: 0;
-  background-size: 110px 12px;
-  /* background-image: url(./logo-white.svg); */
-}
 #hlLinkToQueueTicket2 {
   pointer-events: none;
   text-decoration: none;
@@ -409,7 +435,7 @@ body.exit .btn {
 /* change font weight for elements */
 #content,
 #header,
-#header h2,
+#header h1,
 .warning-box,
 .processbar-box,
 .time-box h2,
@@ -442,6 +468,7 @@ body.exit .btn {
     display: block;
     margin: 5px auto 0;
     float: none;
+    text-align: center;
   }
   #footer-direct-link {
     text-align: center;

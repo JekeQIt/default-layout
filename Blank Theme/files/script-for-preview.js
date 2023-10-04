@@ -38,7 +38,14 @@ $(document).ready(function () {
         }
       });
       //do something when paused button clicked.
-      // $("#PreviewStatesContent label:nth-child(4) input").change(function () {});
+      $("#PreviewStatesContent label:nth-child(4) input").click(function () {
+        if ($("#PreviewStatesContent label:nth-child(4) input")[0].checked === true) {
+          console.log("selected");
+        }
+        if ($("#PreviewStatesContent label:nth-child(4) input")[0].checked === false) {
+          console.log("not selected");
+        }
+      });
     }
   }
 });
