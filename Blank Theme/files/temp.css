@@ -48,11 +48,14 @@
 }
 #MainPart_lbQueueNumberText,
 #MainPart_lbQueueNumber,
+#MainPart_lbQueueNumberLineBreak,
 #MainPart_lbUsersInLineAheadOfYouText,
 #MainPart_lbUsersInLineAheadOfYou,
+#MainPart_lbUsersInLineAheadOfYouLineBreak,
 #MainPart_lbExpectedServiceTimeText,
 #MainPart_lbExpectedServiceTime,
 #MainPart_lbExpectedServiceTimeTimeZonePostfix,
+#MainPart_lbExpectedServiceTimeLineBreak,
 #MainPart_lbWhichIsInText,
 #MainPart_lbWhichIsIn {
   /*display: none;*/

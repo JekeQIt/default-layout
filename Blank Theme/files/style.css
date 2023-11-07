@@ -1,4 +1,7 @@
 /* Jeke template*/
+:root {
+  --main-color: #0d5f41;
+}
 
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'); */
 body {
@@ -154,12 +157,13 @@ a {
 }
 /* progressbar ppp  */
 .progressbar {
+  overflow: hidden;
   background: #4d4d4d;
   border: 5px solid #000;
 }
 .progressbar .progress,
 .progressbar .progress.updated {
-  background-color: red;
+  background-color: var(--main-color);
   background-image: none;
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 13px, #000 13px);
   background-size: 15px;
@@ -206,7 +210,7 @@ a {
 
 .processbar-box .holder {
   min-height: 0;
-  padding: 10px 0 10px 0;
+  padding: 0;
   border: none;
 }
 
@@ -221,6 +225,9 @@ a {
 #MainPart_lbWhichIsIn,
 #MainPart_lbExpectedServiceTimeTimeZonePostfix {
   font-weight: 700;
+}
+#first-in-line {
+  display: block;
 }
 /*Blinking icon*/
 #MainPart_ulProgressbarBox_Holder_Processbar {
@@ -239,7 +246,7 @@ a {
   overflow: hidden;
 }
 .processbar span {
-  background-image: linear-gradient(to bottom, #fff 21px, red 21px);
+  background-image: linear-gradient(to bottom, #fff 21px, var(--main-color) 21px);
 }
 /*status last updated*/
 #MainPart_divProgressbarBox_Holder_LastUpdateTime {
@@ -316,7 +323,7 @@ a {
 
 /*button bbb*/
 .btn {
-  background-color: red;
+  background-color: var(--main-color);
   color: #fff;
   width: 184px;
   text-align: center;
@@ -338,8 +345,8 @@ a {
 .btn .r {
   display: none;
 }
-body.error .btn,
-body.exit .btn {
+.error .btn,
+.exit .btn {
   width: auto;
   display: inline-flex;
   flex-direction: column;
@@ -347,7 +354,7 @@ body.exit .btn {
 }
 .btn:hover {
   background: none;
-  background-color: red;
+  background-color: var(--main-color);
   box-shadow: none;
 }
 
@@ -394,6 +401,7 @@ body.exit .btn {
   pointer-events: none;
   cursor: default;
 }
+/* Queue-it fogo */
 #footer-queueit-link {
   float: none;
 }
@@ -411,6 +419,7 @@ body.exit .btn {
   display: inline-block;
 }
 .footer-logo-svg-path {
+  fill: #0d5f41;
 }
 
 #footer a {

@@ -27,7 +27,7 @@ queueViewModel.pageReady(function (data) {
 });
 
 queueViewModel.modelUpdated(function (data) {
-  console.log(data.texts.tags);
+  // console.log(data.texts.tags);
 });
 
 // $(document).ready(function(){
