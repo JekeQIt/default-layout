@@ -111,9 +111,9 @@ Your estimated wait time is
 #footer-queueit-link .by {
 }
 .progressbar .progress .runner {
-  content: url(./default_images/player_right_walk1-0.2.gif);
+  background-image: url(./default_images/player_right_walk1-0.2.gif);
 }
 .progressbar .progress .runner.paused {
-  content: url(./default_images/person_pause.png);
+  background-image: url(./default_images/person_pause.png);
 }
 /* temp css - end */

@@ -1,22 +1,46 @@
 ﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
     <title></title>
     <style>
-        body {
-            margin: 0;
-        }
+      body {
+        margin: 0;
+      }
 
-        .main-container {
-        }
+      .main-container {
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main-container">
-    </div>
-</body>
+      <label class="cblabel queueElement">
+        <input type="range" value="75" id="progressWidthInput" max="100" min="0" />
+        <span class="title">&nbsp Width of progress bar</span>
+        <span class="qmark"
+          >?
+          <span class="tooltip">Change the width of the progress bar</span>
+        </span>
+      </label>
+      <label class="cblabel queueElement">
+        <input class="update-state" type="checkbox" />
+        Progessbar updating state
+        <span class="qmark"
+          >?
+          <span class="tooltip">Click to see the progressbar in the updating state</span>
+        </span>
+      </label>
+      <label class="cblabel queueElement">
+        <input class="invite-only-preview" type="checkbox" />
+        Invite Only
+      </label>
 
+      <label class="cblabel queueElement">
+        <input class="iowr-email-error" type="checkbox" />
+        Email Error
+      </label>
+    </div>
+  </body>
 </html>

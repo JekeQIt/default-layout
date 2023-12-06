@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="files/temp.css" type="text/css" />
     <link rel="stylesheet" href="files/style.css" type="text/css" />
     <link rel="stylesheet" href="files/previewstate.css" type="text/css" />
+    <link rel="stylesheet" href="files/inviteOnlyCSS.css" type="text/css" />
+
     <script>
       (function () {
         if (!window.console) window.console = {};
@@ -212,7 +214,7 @@
         botDetectHost: "queuejeff.queue-it.net",
         reCaptchaSource: "//assets.queue-it.net/static/challenge/script/par-eu-west-1-c/recaptcha.min.js",
         reCaptchaHost: "queuejeff.queue-it.net",
-        inviteOnlyEmailVerificationSource: "//assets.queue-it.net/static/challenge/inviteonly/email-verification.js",
+        inviteOnlyEmailVerificationSource: "./files/email-verification.js",
         inviteOnlyEmailVerificationHost: "queuejeff.queue-it.net",
         showInviteOnlyEmailVerificationChallenge: true,
         isCustomerUsingEnqueueTokenFormatV1: false,
@@ -220,18 +222,22 @@
       });
 
       window.queueViewModel.init();
+      window.PreviewQueueStateVM = new QueueIt.Queue.PreviewQueueStateVM(window.queueViewModel, window.queueViewModel.options.inqueueInfo);
 
       $(document).ready(function () {
-        $("#wrapper").removeClass("hidden-on-load");
         ko.applyBindings(window.queueViewModel);
         window.queueViewModel.onReady();
+        // clean binding of PreviewQueueStatesDiv and bind it to PreviewQueueState
+        ko.cleanNode($("#PreviewQueueStatesDiv")[0]);
+        ko.applyBindings(PreviewQueueStateVM, $("#PreviewQueueStatesDiv")[0]);
+
+        $("#wrapper").removeClass("hidden-on-load");
       });
     </script>
+    <script type="text/javascript" src="files/jqueryui.js"></script>
     <script type="text/javascript" src="files/test.js"></script>
     <script type="text/javascript" src="files/script-for-preview.js"></script>
-
     <script type="text/javascript" src="files/script.js"></script>
-
     <script type="text/javascript" src="files/iframeResizer.min.js"></script>
     <style>
       body.before .queueElement,
@@ -239,6 +245,14 @@
         display: none;
       }
     </style>
+    <script>
+      $(function () {
+        $("#PreviewQueueStatesDiv").draggable({
+          containment: "window",
+          scroll: false,
+        });
+      });
+    </script>
   </head>
   <body data-pageid="queue" data-culture="en-US" class="queue key-required queueit-enqueue-token-required">
     <div id="noscript" class="modal" role="dialog" aria-describedby="BodyTop_nojavascriptenabled">
@@ -250,6 +264,113 @@
     <script type="text/javascript">
       document.getElementById("noscript").style.display = "none";
     </script>
+    <div id="PreviewQueueStatesDiv" class="min">
+      <div id="PreviewStatesHeader">
+        <span>Other Information</span>
+        <img
+          class="btn-resize"
+          title="Resize"
+          data-bind="click: PreviewQueueStateVM.minimizeWindow"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjA2RkNFMDgxODBDOTExRTc4OTNEOURDMUREQjEyNjZEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjA2RkNFMDgyODBDOTExRTc4OTNEOURDMUREQjEyNjZEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDZGQ0UwN0Y4MEM5MTFFNzg5M0Q5REMxRERCMTI2NkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDZGQ0UwODA4MEM5MTFFNzg5M0Q5REMxRERCMTI2NkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6mvds5AAAExElEQVR42uybeYhNURzH70OMmZBkmbGUbQgxFNkN2UMmjDVJDCah+GdoskeRJUmWmrJkCdmFyL5rkqWhLNmT7NvYnu+v95t6TXPvO+ee333v1nvf+tTM3PPuPff7zj339/udM4FgMGjFs8pZca6EAQkDEgbEtyrYHWi4L2B67rpgIjgHzrs8R0uQDQrAU5POPBkW1DPAUAPAODAGHDAwYCqYDlqAXWCfnx8BOtckUAiO8c2ThoJcF+fL5psnDQd7wQMwC1T26xywBmSU8ff1YJHGeWaC3WX8PR2sBuX9aMA/cNjheD44DTo6tGkD9rORdqJrfPV8EnSp4gjHe4Er4Dqb8QwEecLMBN0UrvEpKm8Bl0pRbNeBcaM6fo4DMqLw6m7vVwOoY02iYEA1kOVHAzZFMYBb5zcDVkRp+IdHmdv9YsACMCcGYfxYsDaWBtQHR8H8GOYyM8Alzhk8ew1WBW3BQ/69NRgBJkhGZAbqDO6CHWAPuMlBGU3IReCdqQFLw2JyP2ssY3FwFeCocYiJAclgmnBHT4JT4A54BP7yt0XDuGekDiuqJJcfDNLAK7cGSA7zPZwQ3SsrXWdTKAdoBPI4s5QQjd65bibBTE49JTQejLS5+dJ6DCZzGv1L4NpTwx4NLQOoA02FJqltLj53kCdcUxOq85epbQClr13Ac4OLj+Lsz62oANLb4PMfQX+nOMXJgC/gMk9ORS4uftymqKGrCy5H0FvQCpxwSqFVAqEvnOh81uzARME3xxR+W6jqN8cuL6Uiwa8c/KiKih1vBA34AXZqtM91evW5DYVPhkWDKhOYtI4qtnsPtniVC6g+00UeGFCo2O6Al8nQY43ZW1r0PP9UaHc/VgWRcP3z4JxBRvTaugakKbZL98AAKoaqLIg09dKAQYrtmnlggGrFKcsrA6gM1Umx7UAPDOirMVKyvTCgQHOkVBO8+QAnVKqiAm2KpAFUeuqj2ekNggZQmpyk0Z7Mv6ligooBlNC4KT6OBv0Ebr41fwG6as7xSDunmoaTAV3BSs0QtLSOGL4RaoGzBp+vB26BVW4MoG9wtuG3RxWn2xoTWLhowr3L+byJip0iUycDFluhjQ6mSuKUdCOorfj8ruRUvKbA9TdaDqtWAbudorxHaKBGEqIiqu7QVpczPEm95sgtldPXHjzyqgheszGF8HZ7hCIZYHFamepRyFzM4W2SR+enYkp3+sFkk9QCsBxc47pADZ5ZJd7zlQRv9iCPVtp88ccKVYOuqkxSKkHF1lKZWDKHnPMtmcKpiahGMY0fq3CpVKCVA6HSaeh3K7QUla4ZIUprF+cdZ9yeQCIdptrf5hjc/GGeMI0kVQ/IsULLXNESlbslltBECyI5UTRAasVK1AB6Dp9F4ea/8aTsOwMsDm681g1LrTSmHKtLSnXx5CmPmCd8M7TbpKdi4vRCssPSBlSMcLyQA6tDNsep5jCPQ2I7pUh2WHq3+NAISUk7h5sn0R6BTLDEoU0WB2K+nAOo42Wtxy20Quv0qsq3KYJ84LDclyOAsrploAEHRyXR2Wke9rqizZAlq8IXrdBODypw5HEk6ss5oMSIAn7eR7EBbkX/G0CLrHs5yRFXIPGfo3GuhAEJAxIGxLf+CzAA4bfsKUuyXLcAAAAASUVORK5CYII="
+        />
+      </div>
+      <div id="PreviewStatesContent">
+        <p class="explain">
+          Components of the <span class="beforeElement">before</span><span class="queueElement">queue</span> page that will be visible when:
+        </p>
+        <label class="cblabel">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.connectionLost" />
+          The user's internet connection is lost
+          <span class="qmark">
+            ?
+            <span class="tooltip">A warning message is displayed instead of the queue information when the user loses internet connection</span>
+          </span>
+        </label>
+        <label class="cblabel queueElement">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.javascriptDisabled" />
+          JavaScript is disabled in the user's browser
+          <span class="qmark">
+            ?
+            <span class="tooltip">A warning message is displayed on top of the page if JavaScript is not enabled in the user's browser</span>
+          </span>
+        </label>
+        <label class="cblabel queueElement">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.queuePaused" />
+          The queue is paused
+          <span class="qmark">
+            ?
+            <span class="tooltip"
+              >While the queue is paused, this information is displayed instead of estimated wait time and/or expected arrival time on the website</span
+            >
+          </span>
+        </label>
+        <label class="cblabel queueElement">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.firstInLine" />
+          The user is first in line
+          <span class="qmark">
+            ?
+            <span class="tooltip"
+              >When the user is first in line, the displayed message changes from "Number of users in queue ahead of you: [number]" to "It is your turn"</span
+            >
+          </span>
+        </label>
+        <label class="cblabel queueElement">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.serviceSoon, enable:PreviewQueueStateVM.firstInLine" disabled="" />
+          The user is being redirected to the website
+          <span class="qmark">
+            ?
+            <span class="tooltip"
+              >Just before being redirected to the website, redirection information is displayed instead of estimated wait time and/or expected arrival time on
+              the website</span
+            >
+          </span>
+        </label>
+        <label class="cblabel queueElement">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.redirectModal" />
+          It's the user's turn and the queue browser tab is inactive
+          <span class="qmark">
+            ?
+            <span class="tooltip"
+              >In this situation, a pop-up message is displayed informing the user when their turn started and asking them to confirm that they want to proceed
+              to the website</span
+            >
+          </span>
+        </label>
+        <label class="cblabel" data-bind="visible:PreviewQueueStateVM.dynamicMessageVisibleByLayout">
+          <input type="checkbox" data-bind="checked: PreviewQueueStateVM.hideDynamicMessage" />
+          No dynamic message has been posted
+          <span class="qmark">
+            ?
+            <span class="tooltip"
+              >If there is no dynamic message saved on the event console, then the dynamic message section is hidden from the
+              <span class="beforeElement">before</span><span class="queueElement">queue</span> page for all users</span
+            >
+          </span>
+        </label>
+        <div id="reminderStatusMesage" class="queueElement" data-bind="visible: PreviewQueueStateVM.reminderFormVisibleByLayout">
+          <label id="reminderStatusLabel" class="cblabel">
+            The user enters:
+            <span class="qmark">
+              ?
+              <span class="tooltip"
+                >After the user enters an email address and clicks on "Notify me by e-mail", a status message is displayed for 60 seconds</span
+              >
+            </span>
+          </label>
+          <label class="cblabel"
+            ><input type="radio" name="reminderMessage" value="success" data-bind="checked: PreviewQueueStateVM.reminderEmailStatus" />
+            A valid email address
+          </label>
+          <label class="cblabel"
+            ><input type="radio" name="reminderMessage" value="error" data-bind="checked: PreviewQueueStateVM.reminderEmailStatus" /> An empty or invalid email
+            address</label
+          >
+          <button data-bind="click: PreviewQueueStateVM.hideReminderStatusMessage, enable: PreviewQueueStateVM.reminderEmailStatus" disabled="">
+            Hide now
+          </button>
+        </div>
+      </div>
+    </div>
 
     <div id="toppanel" style="display: none" data-bind="visible: layout.topPanelVisible">
       <iframe
@@ -311,16 +432,10 @@
                 />
               </div>
               <h1 id="headertext">
-                <span id="lbHeaderH2" data-bind="html: texts.header"
-                  >You’re now in line to access Soukuu from <br class="d-br" />
-                  The North Face X Undercover.</span
-                >
+                <span id="lbHeaderH2" data-bind="html: texts.header">You are now in line </span>
               </h1>
               <div id="headerparagraph">
-                <span id="lbHeaderP" data-bind="html: texts.body"
-                  >The page will automatically change when you’re up to check out this collaboration. To keep your place in the queue, do not refresh or leave
-                  this page.</span
-                >
+                <span id="lbHeaderP" data-bind="html: texts.body">You are in line. When it is your turn, you will have 10 minutes to enter the website.</span>
               </div>
               <div id="whatisthis">
                 <a
@@ -399,12 +514,11 @@
               <div id="MainPart_divProgressbarBox_Holder" class="holder">
                 <!-- before/idle -->
                 <div id="defaultCountdown" class="beforeElement"></div>
-                <p class="larger beforeElement">
-                  <div id="MainPart_divUsersInQueueCount" style="display: none" data-bind="visible: layout.usersInQueueVisible">
-                    <span id="MainPart_lbUsersInQueueCountText">Total number of users in line:</span>
-                    <span id="MainPart_lbUsersInQueueCount" data-bind="text: ticket.usersInQueue">0</span>
-                  </div>
-                </p>
+                <p class="larger beforeElement"></p>
+                <div id="MainPart_divUsersInQueueCount" style="display: none" data-bind="visible: layout.usersInQueueVisible">
+                  <span id="MainPart_lbUsersInQueueCountText">Total number of users in line:</span>
+                  <span id="MainPart_lbUsersInQueueCount" data-bind="text: ticket.usersInQueue">0</span>
+                </div>
 
                 <!-- queue -->
                 <p id="MainPart_pProgressbarBox_Holder_Larger" class="larger queueElement">

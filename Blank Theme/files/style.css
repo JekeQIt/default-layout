@@ -1,9 +1,11 @@
 /* Jeke template*/
+
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'); */
+
 :root {
   --main-color: #0d5f41;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'); */
 body {
   background-color: #fff;
   color: #000;
@@ -77,7 +79,7 @@ body {
   padding: 0 15px;
 }
 #main-top {
-  padding: 0 15px;
+  padding: 0;
 }
 
 #language-selector {
@@ -131,22 +133,7 @@ a {
   padding: 0;
   font-weight: 400;
 }
-@-webkit-keyframes gradient_bkgd {
-  from {
-    background-position: 0px;
-  }
-  to {
-    background-position: 15px;
-  }
-}
-@-moz-keyframes gradient_bkgd {
-  from {
-    background-position: 0px;
-  }
-  to {
-    background-position: 15px;
-  }
-}
+
 @keyframes gradient_bkgd {
   from {
     background-position: 0px;
@@ -196,7 +183,7 @@ a {
 .alert-success {
   border-color: #468847;
 }
-
+/* rrr */
 .processbar-box {
   line-height: normal;
   font-weight: 400;
@@ -394,6 +381,7 @@ a {
   font-weight: inherit;
   padding: 0 6px;
 }
+/* Queue-id */
 #footer-direct-link {
   padding: 0;
 }
@@ -401,7 +389,7 @@ a {
   pointer-events: none;
   cursor: default;
 }
-/* Queue-it fogo */
+/* Queue-it logo */
 #footer-queueit-link {
   float: none;
 }
@@ -419,7 +407,7 @@ a {
   display: inline-block;
 }
 .footer-logo-svg-path {
-  fill: #0d5f41;
+  fill: var(--main-color);
 }
 
 #footer a {

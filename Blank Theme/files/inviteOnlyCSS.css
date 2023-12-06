@@ -1,0 +1,35 @@
+#invitee_email,
+#invitee_code,
+#invitee_customcode {
+  height: 35px;
+  box-sizing: border-box;
+}
+#error_box,
+#error_box_code {
+  color: red;
+}
+.key-required #main_invite_div {
+  color: inherit;
+}
+.key-required #code_message {
+  color: inherit;
+}
+.key-required #challenge-widget-container {
+  width: 100%;
+}
+.key-required .input_box {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+.key-required #invitee_email {
+  width: 100%;
+}
+#lblEmail {
+  visibility: hidden;
+}
+@media screen and (max-width: 540px) {
+  .key-required #invitee_email {
+    width: auto;
+  }
+}
