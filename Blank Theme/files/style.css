@@ -437,13 +437,14 @@ a {
 .processbar-box,
 .time-box h2,
 .reminder-form h2,
-.reminder-form .item-input,
-.reminder-form .item-input:focus,
+.item-input,
+.item-input:focus,
 #footer {
 }
 #MainPart_divExitLine {
   display: none;
 }
+
 @media screen and (max-width: 540px) {
   .reminder-form .item-input,
   .btn {
