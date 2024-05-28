@@ -12,9 +12,6 @@ queueViewModel.pageReady(function (data) {
   if (pageid == "after") {
   }
 
-  if (pageid == "exit") {
-  }
-
   if (pageid == "error") {
     var errorid = $("body").attr("data-errorid");
 

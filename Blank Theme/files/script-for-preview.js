@@ -1,3 +1,5 @@
+//This script if for preview only. It can be added to a theme in GO to add extra preview functionality. Works locally and with previews generated from the custom theme area of GO. Will not work on previews generated from the display tab in waiting room settings.
+
 $(document).ready(function () {
   if (queueViewModel.eventId === "preview-layout" || queueViewModel.eventId === "testevent") {
     console.log("preview");
@@ -5,41 +7,42 @@ $(document).ready(function () {
 
     if (pageid == "queue") {
       $("#reminderStatusMesage").after(
+        /*html*/
         `
-        <label class="cblabel queueElement">
-        <input type="range" value="75" id="progressWidthInput" max="100" min="0" />
-        <span class="title">&nbsp Width of progress bar</span>
-        <span class="qmark"
-          >?
-          <span class="tooltip">Change the width of the progress bar</span>
-        </span>
-      </label>
-      <label class="cblabel queueElement">
-        <input class="update-state" type="checkbox" />
-        Progessbar updating state
-        <span class="qmark"
-          >?
-          <span class="tooltip">Click to see the progressbar in the updating state</span>
-        </span>
-      </label>
-      <label class="cblabel queueElement">
-        <input class="invite-only-preview" type="checkbox" />
-        Invite Only
-      </label>
-      <div class="invite-only-sub-container ">
-        <label class="cblabel queueElement">
-          <input class="iowr-email-error" type="checkbox" />
-         Email Error
-        </label>
-        <label class="cblabel queueElement">
-          <input class="iowr-email-success" type="checkbox" />
-         Email Success
-        </label>
           <label class="cblabel queueElement">
-            <input class="iowr-code-error" type="checkbox" />
-           Code Error
+            <input type="range" value="75" id="progressWidthInput" max="100" min="0" />
+            <span class="title">&nbsp Width of progress bar</span>
+            <span class="qmark"
+              >?
+              <span class="tooltip">Change the width of the progress bar</span>
+            </span>
           </label>
-      </div>
+          <label class="cblabel queueElement">
+            <input class="update-state" type="checkbox" />
+            Progessbar updating state
+            <span class="qmark"
+              >?
+              <span class="tooltip">Click to see the progressbar in the updating state</span>
+            </span>
+          </label>
+          <label class="cblabel queueElement">
+            <input class="invite-only-preview" type="checkbox" />
+            Invite Only
+          </label>
+          <div class="invite-only-sub-container ">
+            <label class="cblabel queueElement">
+            <input class="iowr-email-error" type="checkbox" />
+          Email Error
+          </label>
+          <label class="cblabel queueElement">
+            <input class="iowr-email-success" type="checkbox" />
+          Email Success
+          </label>
+            <label class="cblabel queueElement">
+              <input class="iowr-code-error" type="checkbox" />
+            Code Error
+            </label>
+        </div>
 
         `
       );
@@ -82,61 +85,40 @@ $(document).ready(function () {
         if ($("#divChallenge").length === 0) {
           $(`
           <div id="divChallenge">
-      <div id="divChallenge_Content">
-        <div id="challenge-widget-container">
-          <div id="challenge-container">
-            <form onsubmit="verifyEmailGetCode(event)">
-              <div id="main_invite_div">
-                <label for="invitee_email" id="lblEmail">Please enter email</label>
-                <div class="input_box">
-                  <input
-                    area-label="email"
-                    placeholder="Please enter email"
-                    type="text"
-                    id="invitee_email"
-                    required=""
-                    autofocus=""
-                    autocomplete=""
-                    data-keeper-lock-id="k-5v201q18jio"
-                  /><button class="btn" type="submit" id="btnSubmit_Email">Submit</button
-                  ><keeper-lock
-                    class="focus-visible keeper-lock-disabled"
-                    tabindex="0"
-                    id="k-5v201q18jio"
-                    aria-label="Open Keeper Popup"
-                    role="button"
-                    style="
-                      background-image: url('chrome-extension://bfogiafebfohielmmehodmfbbebbbpei/images/ico-field-fill-lock-disabled.svg') !important;
-                      background-size: 24px 24px !important;
-                      cursor: pointer !important;
-                      width: 24px !important;
-                      position: absolute !important;
-                      opacity: 0 !important;
-                      margin-top: auto !important;
-                      min-width: 24px !important;
-                      top: 31.5px;
-                      left: 298.438px;
-                      z-index: 1;
-                      padding: 0px;
-                      height: 24px !important;
-                    "
-                  ></keeper-lock>
+            <div id="divChallenge_Content">
+              <div id="challenge-widget-container">
+                <div id="challenge-container">
+                  <form onsubmit="verifyEmailGetCode(event)">
+                    <div id="main_invite_div">
+                      <label for="invitee_email" id="lblEmail">Please enter email</label>
+                      <div class="input_box">
+                        <input
+                          area-label="email"
+                          placeholder="Please enter email"
+                          type="text"
+                          id="invitee_email"
+                          required=""
+                          autofocus=""
+                          autocomplete=""
+                          data-keeper-lock-id="k-5v201q18jio"
+                        />
+                        <button class="btn" type="submit" id="btnSubmit_Email">Submit</button>
+                      </div>
+                      <div aria-live="assertive" class="message_box">
+                        <div id="error_box"></div>
+                        <div id="loading_div" class="hidden">Verifying Please wait...........<br /></div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
-                <div aria-live="assertive" class="message_box">
-                  <div id="error_box"></div>
-                  <div id="loading_div" class="hidden">Verifying Please wait...........<br /></div>
+                <div class="hidden" id="three-bar-loader-container" style="display: none">
+                  <div class="three-bar-loader"></div>
+                  <div class="three-bar-loader"></div>
+                  <div class="three-bar-loader"></div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
-          <div class="hidden" id="three-bar-loader-container" style="display: none">
-            <div class="three-bar-loader"></div>
-            <div class="three-bar-loader"></div>
-            <div class="three-bar-loader"></div>
-          </div>
-        </div>
-      </div>
-    </div>
         `).insertAfter("#divConfirmRedirectModal");
         }
         if ($("#divChallenge").length > 0) {
@@ -144,12 +126,12 @@ $(document).ready(function () {
         }
         $(".invite-only-sub-container").show();
         $("body").addClass("key-required");
-        $("#header, #MainPart_divProgressbar, #MainPart_divProgressbarBox, #MainPart_frmReminder2").hide();
+        $(" #MainPart_divProgressbar, #MainPart_divProgressbarBox, #MainPart_frmReminder2, #footer-direct-link").hide();
       } else {
         $("#divChallenge").hide();
         $("body").removeClass("key-required");
         $(".invite-only-sub-container").hide();
-        $("#header, #MainPart_divProgressbar, #MainPart_divProgressbarBox, #MainPart_frmReminder2").show();
+        $(" #MainPart_divProgressbar, #MainPart_divProgressbarBox, #MainPart_frmReminder2, #footer-direct-link").show();
       }
 
       // Email error checkbox

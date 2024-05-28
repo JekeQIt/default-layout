@@ -1,13 +1,47 @@
+/* default invite only css that's not in default_style */
+
+#divChallenge div,
+.modal-body {
+  text-align: center;
+}
+#challenge-widget-container {
+  width: 302px;
+  margin: 25px auto;
+}
+
+#main_invite_div {
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+#lblCode,
+#lblEmail {
+  visibility: hidden;
+}
+.input_box {
+  display: flex;
+}
 #invitee_email,
 #invitee_code,
 #invitee_customcode {
   height: 35px;
   box-sizing: border-box;
 }
+#btnSubmit_Email,
+#btnSubmit_Code {
+  height: 35px;
+  padding: 5px 16px;
+  margin: 0 2px;
+  min-width: 80px;
+}
 #error_box,
 #error_box_code {
   color: red;
 }
+/* changes */
 .key-required #main_invite_div {
   color: inherit;
 }
@@ -28,6 +62,7 @@
 #lblEmail {
   visibility: hidden;
 }
+
 @media screen and (max-width: 540px) {
   .key-required #invitee_email {
     width: auto;
