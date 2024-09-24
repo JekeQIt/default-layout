@@ -64,6 +64,17 @@ $(document).ready(function () {
           $("#MainPart_divProgressbar_Progress").removeClass("updated");
         }
       });
+      //hide wrapper when javascript is disabled.
+      $("#PreviewStatesContent label:nth-child(3) input").click(function () {
+        if ($("#PreviewStatesContent label:nth-child(3) input")[0].checked === true) {
+          console.log("javascropt button selected");
+          $("#wrapper").hide();
+        }
+        if ($("#PreviewStatesContent label:nth-child(3) input")[0].checked === false) {
+          console.log("javascropt button not selected");
+          $("#wrapper").show();
+        }
+      });
       //do something when paused button clicked.
       $("#PreviewStatesContent label:nth-child(4) input").click(function () {
         if ($("#PreviewStatesContent label:nth-child(4) input")[0].checked === true) {
@@ -164,9 +175,7 @@ $(document).ready(function () {
           }
           //if code_message element doesnt exist, create it. If exists, show()
           if ($("#code_message").length === 0) {
-            $(`<div id="code_message">A six-digit verification code has been sent to your email. Please submit the code above.</div>`).insertAfter(
-              ".input_box"
-            );
+            $(`<div id="code_message">A six-digit verification code has been sent to your email. Please submit the code above.</div>`).insertAfter(".input_box");
           } else {
             $("#code_message").show();
           }

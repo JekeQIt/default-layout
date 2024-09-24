@@ -238,6 +238,7 @@ a {
 /*status last updated*/
 #MainPart_divProgressbarBox_Holder_LastUpdateTime {
   font-size: 12px;
+  margin: 10px 0 5px;
 }
 /* Dynamic message mmm*/
 .time-box {

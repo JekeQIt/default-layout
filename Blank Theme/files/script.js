@@ -24,9 +24,5 @@ queueViewModel.pageReady(function (data) {
 });
 
 queueViewModel.modelUpdated(function (data) {
-  // console.log(data.texts.tags);
+  // console.log(data.ticket.expectedServiceTime);
 });
-
-// $(document).ready(function(){
-//   $('#MainPart_ulProgressbarBox_Holder_Processbar').removeAttr('style')
-// })
