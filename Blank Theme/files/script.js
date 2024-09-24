@@ -1,7 +1,7 @@
 queueViewModel.pageReady(function (data) {
   var pageid = $("body").attr("data-pageid");
   var culture = $("body").attr("data-culture");
-  //  $("#logo").insertBefore("#main");
+  //  $(".logo").insertBefore("#main");
 
   if (pageid == "before") {
   }
